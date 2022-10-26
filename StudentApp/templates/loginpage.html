@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+</head>
+<body>
+    <style>
+          h2{
+            color: red;
+            text-align: center;
+            font-size: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        body{   
+         background-color: rgb(21, 192, 235);
+         margin-top: auto;
+         
+}
+button:hover{
+    background-color: rgb(207, 219, 37);
+}
+    </style>
+<div class="container">
+    {% for message in messages%}
+<h5>
+    <div class="'alert alert-danger mt-5" style="width:50%;">
+        {{ message }}
+    </div>
+</h5> 
+    {% endfor %}   
+    <div class="details">
+        <h2 style="margin-top:5%;text-align: center;">LOG IN</h2><br>
+        <form method="post" action="loginuser">
+            {% csrf_token %}
+             <label><h5>Username</h5></label>
+            <input type="text" name="username" class='form-control' placeholder="Enter username"><br>
+            <label><h5>Password</h5></label>
+
+            <input type="password" name="password" class='form-control' placeholder="Enter password"><br>
+            <button type="submit" class='btn' style="margin-left: 40%;font-size: 20px;width:20%">SIGN-UP</button><br>
+        </form>
+    </div>
+</div>
+</body>
+{% endblock %}

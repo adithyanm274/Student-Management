@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Document</title>
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'edit.css' %}">
+</head>
+<style>
+    body{
+        background: #EFEFBB;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+    h2{
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        font-size: 2em;
+        font-family:times new roman;
+
+    }
+    .container{
+        text-align: center;
+        background-color: rgba(0,0,0,0.2);
+        width: 30%;
+        height:90vh;
+        margin-left: 35%;
+        border-radius: 30px;
+        margin-top: 10%;
+    }
+   
+    
+</style>
+<body>
+<div class="container">
+    <div class="details" > <br> 
+        <h2>UPDATE STUDENT DETAILS</h2><br>
+        <form method="post" action="/edit_product_details/{{products.id}}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label>Enter Student Name:</label><br>
+            <input type="text" name="product_name" value="{{products.product_name}}"><br><br>
+            <label>Enter Student Birth:</label><br>
+            <input type="date" name="quantity" value="{{products.quantity}}"><br>
+            <label>Enter Student Number:</label><br>
+            <input type="number" name="price" value="{{products.price}}"><br><br>
+            
+            
+             {% if products.image == "/static/images/83.jpg" %}
+            <td>
+                <img src="{% static 'images/83.jpg' %}" width="80">
+            </td>
+            {% else %}
+             <td>
+                 <img src="{{ products.image.url }}"width="80">
+             </td>
+            {% endif %}
+            
+            <input type="file" name="file" accept="image/*"><br><br>
+            <button type="submit" class="btn btn-primary">update</button>
+            
+        </form> 
+    </div>   
+</div>      
+</body>
+</html>

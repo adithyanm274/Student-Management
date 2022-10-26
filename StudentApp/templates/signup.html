@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    {% load static %}
+</head>
+<body>
+    <style>
+        h2{
+            color: red;
+            text-align: center;
+            font-size: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        body{
+    background-color: rgb(22, 184, 233);
+}
+button{
+    background-color: rgb(23, 238, 119);
+}
+button:hover{
+    background-color: rgb(48, 24, 185);
+}
+    </style>
+<div class="container">
+    <div class="screen"></div>
+    {% for message in messages%}
+<h5>
+    <div class="'alert alert-danger mt-5" style="width:20%;font-size: 20px;">
+        {{ message }}
+    </div>
+</h5> 
+    {% endfor %}   
+    <div class="details">
+        <h2 style="text-align:center;margin-top: 5%;">SIGN UP</h2><br>
+        <form method="post" action="usercreate" autocomplete="off">
+            {% csrf_token %}
+            <label><h5>First Name</h5></label>
+            <input type="text" name="first_name" class='form-control' placeholder="Enter first name"><br>
+            <label><h5>Last Name</h5></label>
+            <input type="text" name="last_name" class='form-control' placeholder="Enter last name"><br>
+            <label><h5>Username</h5></label>
+            <input type="text" name="usernamee" class='form-control' placeholder="Enter username" autocomplete="off"><br>
+            <label><h5>E_Mail</h5></label>
+            <input type="email" name="email_id" class='form-control' placeholder="Enter email"><br>
+            <label><h5>Password</h5></label>
+            <input type="password" name="password" class='form-control' placeholder="Enter password" autocomplete="off"><br>
+            <label><h5>Confirm Password</h5></label>
+            <input type="password" name="cpassword" class='form-control' placeholder="Confirm password"><br>
+            <button type="submit" style="margin-left:40%;font-size:18px;width:20%">SIGN-UP</button><br>
+            <br>
+            <br>
+        </form>
+    </div>
+</div>
+</body>
+{% endblock %}

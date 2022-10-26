@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'table.css' %}">
+</head>
+<style>
+    body{
+        background-color: beige;
+      }
+      .center{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        
+      
+      }
+      .center thead{
+        font-size: 20px;
+        
+      }
+      .center tbody{
+        font-size: 18px;
+      }
+      .center tbody a{
+        color: black;
+      }
+     
+      
+</style>
+<body>
+    <center>
+     <h1 style="text-align: center;">STUDENT DETAILS</h1>
+<table border="1" class="center" style="width:80%;">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>STUDENT NAME</th>
+        <th>DATE OF BIRTH</th>
+        <th>PHONE</th>
+        <th>IMAGE</th>
+        <th>ACTION</th>
+    </tr>
+</thead>
+<tbody>
+    {% for i in products %}
+    <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.product_name }}</td>
+        <td>{{ i.quantity }}</td>
+        <td>{{ i.price }}</td>
+        {% if i.image == "/static/images/83.jpg" %}
+        <td>
+            <img src="{% static 'images/83.jpg' %}" width="80">
+        </td>
+        {% else %}
+         <td>
+             <img src="{{i.image.url }}"width="80">
+         </td>
+        {% endif %}
+        <td>
+            <a href="{% url 'editpage' i.id %}">Edit</a> <br>
+            <a href="{% url 'delete' i.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<div style="text-align: center;"><br>
+    <button>
+        <a href="{% url 'add' %}" style="text-decoration: none;color:rgba(58, 27, 58, 0.589);font-family:times new roman;font-size: 26px;">ADD STUDENT</a>
+
+    </button>
+    <br>
+</div>
+</center>
+</body>
+</html>

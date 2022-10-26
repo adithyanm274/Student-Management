@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>Student Registration</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'addproduct.css' %}">
+</head>
+<style>
+    body{
+        background: #EFEFBB;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #D4D3DD, #EFEFBB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+    .container{
+       width:400px;
+       margin:100px auto 0px auto;
+    }
+    h2{
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        font-size: 2em;
+        font-family:times new roman;
+
+    }
+    .details{
+        background-color: rgba(0,0,0,0.2);
+        width:100%;
+        height:450px;
+        font-size: 18px;
+        color: black;
+        border-radius: 30px;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+        color:#fff
+    } 
+    form{
+        margin-left: 40px;
+    }
+    label{
+        font-size: 18px;
+        font-style: italic;
+        font-family: sans-serif;
+    }
+    input,textarea{
+        width: 300px;
+        border:1px solid #ddd;
+        border-radius: 3px;
+        color: black;
+        outline:0;
+        padding: 5px;
+        background-color: #fff;
+        box-shadow: inset 1px 1px 5px rgba(0,0,0,0.3);
+    }
+    button{
+        width: 200px;
+        padding: 5px;
+        margin-left: 50px;
+        font-size: 16px;
+        font-family: sans-serif;
+        font-weight: 600;
+        border-radius: 3px;
+        background-color: rgba(250,100,0,0.8);
+        color: #fff;
+        cursor: pointer;
+        border:1px solid rgba(255,255,255,0.3);
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        margin-bottom: 15px;
+    }
+    form button:hover{
+    
+        background-color: gold;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="details"><br>
+        <h2>STUDENT REGISTRATION</h2>
+        <form method="post" action="{% url 'add_product' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <label>Enter Student Name:</label><br>
+            <input type="text" style="color:black;"name="product_name" placeholder="Enter student name"><br>
+            <label>Enter Date of birth:</label><br>
+            <input type="date" name="quantity" placeholder="Enter date of birth"><br>
+            <label>Enter Phone Number:</label><br>
+            <input type="text" name="price" placeholder="Enter Phone number"><br><br>
+            <input type="file" name="file" accept="image/*">
+            <br><br><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            
+        </form>
+    </div>
+</div>
+</body>
+</html>
